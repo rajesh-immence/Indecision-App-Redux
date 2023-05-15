@@ -5,10 +5,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color:#DBDFEA; */
+  height: 100vh;
+  background-color:#e0ebeb ;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+Button{
+  border-radius: 0;
+}
+
+@media screen and (max-width:768px) {
+  .main{
+    width: 94% !important;
+  }
+}
+
+

@@ -18,7 +18,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-export default function ResultBox() {
+export default function ResultBox({}) {
   const [open, setOpen] = React.useState(false);
   const dispatch = useAppDispatch();
   const data= useAppSelector(selectData);
@@ -37,26 +37,48 @@ export default function ResultBox() {
     };
 
   return (
-    <div style={{width:"25%"    }}>
-      <Button sx={{width:"100%"}}  variant="contained" size="large" color="warning" onClick={handleClickOpen}>
+    <div style={{width:"50%"    }}>
+      <Button sx={{width:"100%", bgcolor:"#24527ac7"}}  variant="contained" size="large"  onClick={handleClickOpen}>
         Best choice
       </Button>
       <Dialog
+      PaperProps={{
+        style: {
+          borderRadius:"12px",
+          backgroundColor: "#C2CEEA",
+          color:"#24527a",
+          boxShadow: "none"
+        },
+      }}
         open={open}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle variant='h5'>{"This is the best choice for you."}</DialogTitle>
+        <DialogTitle sx={{fontWeight:"600", bgcolor:"#C2CEEA",textAlign:"center"}} variant='h6'>{"This is the best choice for you."}</DialogTitle>
         <DialogContent>
-          <DialogContentText variant='h5' id="alert-dialog-slide-description">
+          <DialogContentText textAlign={"center"}  color="#24527a"  variant='h5' id="alert-dialog-slide-description">
            {data}
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Ok</Button>
+        <DialogActions sx={{
+          justifyContent: "center",
+        }}>
+          <Button 
+          variant='contained'
+          sx={{
+            margin:"0 0px 10px 0",
+            fontWeight:"600",
+            bgcolor:"#24527a"
+          }} onClick={handleClose}>ok</Button>
+          <Button
+          variant='contained'
+          sx={{
+            margin:"0 0px 10px 0",
+            fontWeight:"600",
+            bgcolor:"#24527a"
+          }} onClick={handleClose}>cancle</Button>
         </DialogActions>
       </Dialog>
     </div>

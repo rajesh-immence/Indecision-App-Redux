@@ -18,27 +18,20 @@ interface InitialState  {
 
 const initialState =   {
     choices: [],
-    data: ""
+    data: "",
 } as InitialState;
 
-export const counterSlice = createSlice({
+export const appSlice = createSlice({
     name: "counter",
     initialState,
     reducers:{
         addChoice : (state, action : PayloadAction<string>) =>{
-            // // for(let i=0; i<state.choices.length; i++){
-            // //     if(state.choices.length > 0 && action.payload.toLowerCase() === state.choices[i].toLowerCase()){
-            // //          alert("Already present");
-            // //         //  state.choices.pop()
-            // //          state.choices.splice(i, 1);
-            // //     }
-            // }
             const lowercaseChoice = state.choices.map((ele)=> ele.toLowerCase());
 
             if(lowercaseChoice.includes(action.payload.toLowerCase()) === false){
                 state.choices.push(action.payload);
             }else{
-                alert("already present")
+                alert("The enter value is already present in the choice list!")
             }
         },
         randomChoice : (state) =>{ 
@@ -50,7 +43,7 @@ export const counterSlice = createSlice({
     }
 }) 
 
-export const {addChoice, randomChoice, clear} = counterSlice.actions;
-export const selectChoice = (state: RootState) => state.counter.choices
-export const selectData = (state: RootState) => state.counter.data
-export default counterSlice.reducer
+export const {addChoice, randomChoice, clear} = appSlice.actions;
+export const selectChoice = (state: RootState) => state.counter.choices;
+export const selectData = (state: RootState) => state.counter.data;
+export default appSlice.reducer
